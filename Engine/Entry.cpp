@@ -23,4 +23,46 @@ int APIENTRY WinMain(
 
 		RegisterClassEx(&wndClass);
 	}
+
+	{
+		CREATESTRUCT window = CREATESTRUCT();
+
+		window.lpszClass = "Window";
+		window.lpszName = "Game";
+		window.style = WS_CAPTION | WS_SYSMENU;
+		window.cx = 500;
+		window.cy = 500;
+		window.hInstance = hInstance;
+
+		{
+			RECT rect = RECT();
+			rect.right = window.cx;
+			rect.bottom = window.cy;
+
+			AdjustWindowRectEx(&rect, window.style, static_cast<bool>(window.hMenu), window.dwExStyle);
+			window.cx = rect.right - rect.left;
+			window.cy = rect.bottom - rect.top;
+
+			window.x = (GetSystemMetrics(SM_CXSCREEN) - window.cx) / 2;
+			window.y = (GetSystemMetrics(SM_CYSCREEN) - window.cy) / 2;
+		}
+
+		hWindow = CreateWindowEx
+		(
+			window.dwExStyle,
+			window.lpszClass,
+			window.lpszName,
+			window.style,
+			window.x,
+			window.y,
+			window.cx,
+			window.cy,
+			window.hwndParent,
+			window.hMenu,
+			window.hInstance,
+			window.lpCreateParams
+		);
+
+		ShowWindow(hWindow, SW_RESTORE);
+	}
 }
