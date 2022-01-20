@@ -17,7 +17,7 @@ int APIENTRY WinMain(
 		WNDCLASSEX wndClass = WNDCLASSEX();
 
 		wndClass.cbSize = sizeof(WNDCLASSEX);
-		wndClass.lpfnWndProc = nullptr;
+		wndClass.lpfnWndProc = Engine::Procedure;
 		wndClass.hInstance = hInstance;
 		wndClass.hIcon = LoadIcon(nullptr, IDI_APPLICATION);
 		wndClass.hCursor = LoadCursor(nullptr, IDC_ARROW);
