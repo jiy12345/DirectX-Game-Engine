@@ -1,5 +1,9 @@
 #include<Windows.h>
 
+namespace Engine
+{
+	LRESULT CALLBACK Procedure(HWND const, UINT const, WPARAM const, LPARAM const);
+}
 
 int APIENTRY WinMain(
 	_In_ HINSTANCE const hInstance,
