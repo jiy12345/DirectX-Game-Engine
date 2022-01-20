@@ -65,4 +65,23 @@ int APIENTRY WinMain(
 
 		ShowWindow(hWindow, SW_RESTORE);
 	}
+
+	{
+		MSG msg = MSG();
+
+		while (true)
+		{
+			if (PeekMessage(&msg, HWND(), WM_NULL, WM_NULL, PM_REMOVE))
+			{
+				if (msg.message == WM_QUIT)
+					return static_cast<int>(msg.wParam);
+
+				DispatchMessage(&msg);
+			}
+			else
+			{
+				SendMessage(hWindow, WM_APP, 0, 0);
+			}
+		}
+	}
 }
