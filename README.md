@@ -6,17 +6,17 @@
 # step1 창 띄우기
 ## 초기 설정
 
-- 프로젝트 우클릭 => 속성 => 구성속성 => 일반
-출력 디렉토리: $(SolutionDir)$.out\
-중간 디렉토리: $(SolutionDir)$.int\Engine\
-
-- 프로젝트 우클릭 => 속성 => 구성속성 => 링커 => 모든 옵션
-링커 경고를 오류로 처리: 예(/WX)
-추가 라이브러리 디렉터리: $(SolutionDir).lib\
-추가 종속성: d3d11.lib;freeimage.lib; 추가
-하위 시스템: 창(/SUBSYSTEM:WINDOWS)
-
-- 프로젝트 우클릭 => 속성 => 구성속성 => C/C++ => 모든 옵션
-추가 포함 디렉터리: $(ProjectDir)
-
-초기 설정에 대한 자세한 내용은 [이 글](https://blog.naver.com/jiy12345/222642266600) 참고
+- 프로젝트 우클릭 => 속성 => 구성속성 => 일반  
+출력 디렉토리: $(SolutionDir)$.out\  
+중간 디렉토리: $(SolutionDir)$.int\Engine\  
+  
+- 프로젝트 우클릭 => 속성 => 구성속성 => 링커 => 모든 옵션  
+링커 경고를 오류로 처리: 예(/WX)  
+추가 라이브러리 디렉터리: $(SolutionDir).lib\  
+추가 종속성: d3d11.lib;freeimage.lib; 추가  
+하위 시스템: 창(/SUBSYSTEM:WINDOWS)  
+  
+- 프로젝트 우클릭 => 속성 => 구성속성 => C/C++ => 모든 옵션  
+추가 포함 디렉터리: $(ProjectDir)  
+  
+초기 설정에 대한 자세한 내용은 [이 글](https://blog.naver.com/jiy12345/222642266600) 참고  
