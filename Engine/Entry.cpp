@@ -1,4 +1,5 @@
 #include<Windows.h>
+#include<tchar.h>
 
 namespace Engine
 {
@@ -22,7 +23,7 @@ int APIENTRY WinMain(
 		wndClass.hIcon = LoadIcon(nullptr, IDI_APPLICATION);
 		wndClass.hCursor = LoadCursor(nullptr, IDC_ARROW);
 		wndClass.hbrBackground = static_cast<HBRUSH>(GetStockObject(WHITE_BRUSH));
-		wndClass.lpszClassName = "Window";
+		wndClass.lpszClassName = _T("Window");
 		wndClass.hIconSm = LoadIcon(nullptr, IDI_APPLICATION);
 
 		RegisterClassEx(&wndClass);
@@ -31,8 +32,8 @@ int APIENTRY WinMain(
 	{
 		CREATESTRUCT window = CREATESTRUCT();
 
-		window.lpszClass = "Window";
-		window.lpszName = "Game";
+		window.lpszClass = _T("Window");
+		window.lpszName = _T("Game");
 		window.style = WS_CAPTION | WS_SYSMENU;
 		window.cx = 500;
 		window.cy = 500;
