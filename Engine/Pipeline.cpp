@@ -1,5 +1,11 @@
 #include "Pipeline.h"
 
+#if not defined _DEBUG
+#define MUST(Expression) (      (         (Expression)))
+#else
+#define MUST(Expression) (assert(SUCCEEDED(Expression)))
+#endif
+
 namespace Pipeline {
 	namespace {
         ID3D11Device* Device;
@@ -9,7 +15,7 @@ namespace Pipeline {
 
     void Procedure(HWND const hWindow, UINT const uMessage, WPARAM const wParameter, LPARAM const lParameter) {
         switch (uMessage) {
-        case WM_CREATE:
+        case WM_CREATE: 
             return;
         case WM_APP:
             return;
