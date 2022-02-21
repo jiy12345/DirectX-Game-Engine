@@ -43,6 +43,40 @@ namespace Pipeline {
                 ));
 
             }
+            {
+                float const Coordinates[4][2]{
+                    {-0.5f, +0.5f},
+                    {+0.5f, +0.5f},
+                    {-0.5f, -0.5f},
+                    {+0.5f, -0.5f}
+                };
+
+                D3D11_SUBRESOURCE_DATA const Subresource{ Coordinates };
+
+                D3D11_BUFFER_DESC const Descriptor{
+                    sizeof(Coordinates),
+                    D3D11_USAGE_IMMUTABLE,
+                    D3D11_BIND_VERTEX_BUFFER,
+                    0
+                };
+
+                ID3D11Buffer* Buffer = nullptr;
+
+                MUST(Device->CreateBuffer(&Descriptor, &Subresource, &Buffer));
+
+                UINT const Stride = sizeof(*Coordinates);
+                UINT const Offset = 0;
+
+                DeviceContext->IASetVertexBuffers(
+                    0,
+                    1,
+                    &Buffer,
+                    &Stride,
+                    &Offset
+                );
+
+                Buffer->Release();
+            }
 
             return;
         }
