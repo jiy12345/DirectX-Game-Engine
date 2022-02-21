@@ -103,6 +103,8 @@ namespace Pipeline {
                 );
             }
 
+            { DeviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP); }
+
             return;
         }
 
