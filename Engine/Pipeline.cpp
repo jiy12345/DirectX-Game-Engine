@@ -11,6 +11,10 @@ namespace Pipeline {
         ID3D11Device* Device;
         ID3D11DeviceContext* DeviceContext;
         IDXGISwapChain* SwapChain;
+
+        namespace Buffer {
+            ID3D11Buffer* Vertex;
+        }
 	}
 
     void Procedure(HWND const hWindow, UINT const uMessage, WPARAM const wParameter, LPARAM const lParameter) {
@@ -43,6 +47,63 @@ namespace Pipeline {
                 ));
 
             }
+            {
+                float const Coordinates[4][2]{
+                    {-0.5f, +0.5f},
+                    {+0.5f, +0.5f},
+                    {-0.5f, -0.5f},
+                    {+0.5f, -0.5f}
+                };
+
+                D3D11_SUBRESOURCE_DATA const Subresource{ Coordinates };
+
+                D3D11_BUFFER_DESC const Descriptor{
+                    sizeof(Coordinates),
+                    D3D11_USAGE_IMMUTABLE,
+                    D3D11_BIND_VERTEX_BUFFER,
+                    0
+                };
+
+                ID3D11Buffer* Buffer = nullptr;
+
+                MUST(Device->CreateBuffer(&Descriptor, &Subresource, &Buffer));
+
+                UINT const Stride = sizeof(*Coordinates);
+                UINT const Offset = 0;
+
+                DeviceContext->IASetVertexBuffers(
+                    0,
+                    1,
+                    &Buffer,
+                    &Stride,
+                    &Offset
+                );
+
+                Buffer->Release();
+            }
+            {
+                D3D11_BUFFER_DESC const Descriptor{
+                    sizeof(float[4][2]),
+                    D3D11_USAGE_DYNAMIC,
+                    D3D11_BIND_VERTEX_BUFFER,
+                    D3D11_CPU_ACCESS_WRITE
+                };
+
+                MUST(Device->CreateBuffer(&Descriptor, nullptr, &Buffer::Vertex));
+
+                UINT const Stride = sizeof(float[2]);
+                UINT const Offset = 0;
+
+                DeviceContext->IASetVertexBuffers(
+                    1,
+                    1,
+                    &Buffer::Vertex,
+                    &Stride,
+                    &Offset
+                );
+            }
+
+            { DeviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP); }
 
             return;
         }
