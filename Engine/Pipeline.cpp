@@ -94,7 +94,6 @@ namespace Pipeline {
                 UINT const Stride = sizeof(float[2]);
                 UINT const Offset = 0;
 
-                // 이미지 로컬 좌표를 위해 0번 슬롯이 이미 사용되었으므로!
                 DeviceContext->IASetVertexBuffers(
                     1,
                     1,
