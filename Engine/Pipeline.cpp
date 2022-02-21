@@ -11,6 +11,10 @@ namespace Pipeline {
         ID3D11Device* Device;
         ID3D11DeviceContext* DeviceContext;
         IDXGISwapChain* SwapChain;
+
+        namespace Buffer {
+            ID3D11Buffer* Vertex;
+        }
 	}
 
     void Procedure(HWND const hWindow, UINT const uMessage, WPARAM const wParameter, LPARAM const lParameter) {
@@ -76,6 +80,28 @@ namespace Pipeline {
                 );
 
                 Buffer->Release();
+            }
+            {
+                D3D11_BUFFER_DESC const Descriptor{
+                    sizeof(float[4][2]),
+                    D3D11_USAGE_DYNAMIC,
+                    D3D11_BIND_VERTEX_BUFFER,
+                    D3D11_CPU_ACCESS_WRITE
+                };
+
+                MUST(Device->CreateBuffer(&Descriptor, nullptr, &Buffer::Vertex));
+
+                UINT const Stride = sizeof(float[2]);
+                UINT const Offset = 0;
+
+                // 이미지 로컬 좌표를 위해 0번 슬롯이 이미 사용되었으므로!
+                DeviceContext->IASetVertexBuffers(
+                    1,
+                    1,
+                    &Buffer::Vertex,
+                    &Stride,
+                    &Offset
+                );
             }
 
             return;
