@@ -111,6 +111,10 @@ namespace Pipeline {
         case WM_APP:
             return;
         case WM_DESTROY:
+            Buffer::Vertex->Release();
+            DeviceContext->Release();
+            Device->Release();
+            SwapChain->Release();
             return;
         case WM_SIZE:
             return;
