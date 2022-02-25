@@ -59,4 +59,4 @@
 창 띄우기에 대한 자세한 내용은 [이 글](https://blog.naver.com/jiy12345/222650250442) 참고
 
 # 실행 결과
-![step 1 execution result](https://github.com/jiy12345/DirectX-Game-Engine/blob/docs_temp/Result-Images/step%201%20execution%20result.png)
+![step 1 execution result](https://github.com/jiy12345/DirectX-Game-Engine/blob/master/Result-Images/step%201%20execution%20result.png)
