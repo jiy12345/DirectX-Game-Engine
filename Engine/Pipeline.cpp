@@ -130,6 +130,20 @@ namespace Pipeline {
 
             { DeviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP); }
 
+#include "Shader/Bytecode/Pixel.h"
+            {
+                ID3D11PixelShader* PixelShader = nullptr;
+                
+                MUST(Device->CreatePixelShader(Bytecode,sizeof(Bytecode),
+                    nullptr,
+                    &PixelShader
+                ));
+                
+                DeviceContext->PSSetShader(PixelShader, nullptr, 0);
+                
+                PixelShader->Release();
+            }
+
             return;
         }
 
