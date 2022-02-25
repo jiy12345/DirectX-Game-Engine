@@ -1,11 +1,11 @@
-#include "Buffers.hlsli"
+#include "Layout.hlsli"
 
 namespace Shader {
 	const Texture2D Resource : register(T0);
 
-	Buffers::Color Pixel(const Buffers::Pixel Input) : SV_Target{
+	Layout::Color Pixel(const Layout::Pixel Input) : SV_Target{
 
-		Buffers::Color Output = {
+		Layout::Color Output = {
 			Resource.Load(int3(Input.TexCoord.x, Input.TexCoord.y, 0))
 		};
 

@@ -47,6 +47,31 @@ namespace Pipeline {
                 ));
 
             }
+#include "Shader/Bytecode/Vertex.h"
+            {
+                D3D11_INPUT_ELEMENT_DESC const Descriptor[2]{
+                    {
+                        "POSITION",
+                        0,
+                        DXGI_FORMAT_R32G32_FLOAT,
+                        0
+                    },
+                    {
+                        "TEXCOORD",
+                        0,
+                        DXGI_FORMAT_R32G32_FLOAT,
+                        1
+                    }
+                };
+
+                ID3D11InputLayout* InputLayout = nullptr;
+
+                MUST(Device->CreateInputLayout(Descriptor, 2, Bytecode, sizeof(Bytecode), &InputLayout));
+
+                DeviceContext->IASetInputLayout(InputLayout);
+
+                InputLayout->Release();
+            }
             {
                 float const Coordinates[4][2]{
                     {-0.5f, +0.5f},
