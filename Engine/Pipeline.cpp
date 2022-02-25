@@ -47,8 +47,9 @@ namespace Pipeline {
                 ));
 
             }
-#include "Shader/Bytecode/Vertex.h"
+
             {
+#include "Shader/Bytecode/Vertex.h"
                 D3D11_INPUT_ELEMENT_DESC const Descriptor[2]{
                     {
                         "POSITION",
@@ -130,8 +131,8 @@ namespace Pipeline {
 
             { DeviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP); }
 
-#include "Shader/Bytecode/Pixel.h"
             {
+#include "Shader/Bytecode/Pixel.h"
                 ID3D11PixelShader* PixelShader = nullptr;
                 
                 MUST(Device->CreatePixelShader(Bytecode,sizeof(Bytecode),
