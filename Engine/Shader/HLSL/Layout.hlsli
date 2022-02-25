@@ -1,4 +1,4 @@
-namespace Buffers {
+namespace Layout {
 	struct Vertex {
 		float4 Position : POSITION;
 		float2 TexCoord : TEXCOORD;

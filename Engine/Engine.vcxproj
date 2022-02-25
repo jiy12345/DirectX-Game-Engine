@@ -172,7 +172,7 @@
     <ClInclude Include="Shader\Bytecode\Vertex.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Shader\HLSL\Buffers.hlsli">
+    <None Include="Shader\HLSL\Layout.hlsli">
       <FileType>Document</FileType>
     </None>
   </ItemGroup>

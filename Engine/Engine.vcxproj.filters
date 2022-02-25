@@ -44,6 +44,6 @@
     <FxCompile Include="Shader\HLSL\Pixel.hlsl" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Shader\HLSL\Buffers.hlsli" />
+    <None Include="Shader\HLSL\Layout.hlsli" />
   </ItemGroup>
 </Project>

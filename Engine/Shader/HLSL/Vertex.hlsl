@@ -1,8 +1,8 @@
-#include "Buffers.hlsli"
+#include "Layout.hlsli"
 
 namespace Shader {
-	Buffers::Pixel Vertex(const Buffers::Vertex Input) {
-		Buffers::Pixel Output = {
+	Layout::Pixel Vertex(const Layout::Vertex Input) {
+		Layout::Pixel Output = {
 			Input.Position,
 			Input.TexCoord
 		};
