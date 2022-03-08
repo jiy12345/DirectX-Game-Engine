@@ -11,6 +11,7 @@ namespace Pipeline {
         ID3D11Device* Device;
         ID3D11DeviceContext* DeviceContext;
         IDXGISwapChain* SwapChain;
+        ID3D11RenderTargetView* RenderTargetView;
 
         namespace Buffer {
             ID3D11Buffer* Vertex;
@@ -147,7 +148,36 @@ namespace Pipeline {
 
             return;
         }
+        case WM_SIZE:
+        {
+            {
+                D3D11_VIEWPORT Viewport = D3D11_VIEWPORT();
 
+                Viewport.Width = LOWORD(lParameter);
+                Viewport.Height = HIWORD(lParameter);
+
+                DeviceContext->RSSetViewports(1, &Viewport);
+            }
+            {
+                if (RenderTargetView != nullptr) {
+                    RenderTargetView->Release();
+                    MUST(SwapChain->ResizeBuffers(1, LOWORD(lParameter), HIWORD(lParameter), DXGI_FORMAT_B8G8R8A8_UNORM, DXGI_SWAP_CHAIN_FLAG_GDI_COMPATIBLE));
+                }
+
+                ID3D11Texture2D* Texture2D = nullptr;
+
+                MUST(SwapChain->GetBuffer(0, IID_PPV_ARGS(&Texture2D)));
+                {
+                    MUST(Device->CreateRenderTargetView(Texture2D, nullptr, &RenderTargetView));
+                }
+                Texture2D->Release();
+
+                DeviceContext->OMSetRenderTargets(1, &RenderTargetView, nullptr);
+
+                Texture2D->Release();
+            }
+            return;
+        }
         case WM_APP:
             return;
         case WM_DESTROY:
@@ -156,8 +186,7 @@ namespace Pipeline {
             Device->Release();
             SwapChain->Release();
             return;
-        case WM_SIZE:
-            return;
+
         }
     }
 };
