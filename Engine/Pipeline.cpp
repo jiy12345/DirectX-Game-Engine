@@ -147,7 +147,18 @@ namespace Pipeline {
 
             return;
         }
+        case WM_SIZE:
+        {
+            {
+                D3D11_VIEWPORT Viewport = D3D11_VIEWPORT();
 
+                Viewport.Width = LOWORD(lParameter);
+                Viewport.Height = HIWORD(lParameter);
+
+                DeviceContext->RSSetViewports(1, &Viewport);
+            }
+        }
+            return;
         case WM_APP:
             return;
         case WM_DESTROY:
@@ -156,8 +167,7 @@ namespace Pipeline {
             Device->Release();
             SwapChain->Release();
             return;
-        case WM_SIZE:
-            return;
+
         }
     }
 };
