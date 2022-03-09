@@ -179,7 +179,15 @@ namespace Pipeline {
             return;
         }
         case WM_APP:
+        {
+            MUST(SwapChain->Present(0, 0));
+
+            float const Color[4]{ 0.0f, 0.0f, 0.0f, 1.0f };
+
+            DeviceContext->ClearRenderTargetView(RenderTargetView, Color);
+
             return;
+        }
         case WM_DESTROY:
             Buffer::Vertex->Release();
             DeviceContext->Release();
