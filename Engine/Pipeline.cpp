@@ -189,6 +189,7 @@ namespace Pipeline {
             return;
         }
         case WM_DESTROY:
+            RenderTargetView->Release();
             Buffer::Vertex->Release();
             DeviceContext->Release();
             Device->Release();
