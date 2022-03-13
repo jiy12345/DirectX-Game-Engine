@@ -168,28 +168,44 @@
   <ItemGroup>
     <ClInclude Include="FreeImage.h" />
     <ClInclude Include="Pipeline.h" />
-    <ClInclude Include="Shader\Bytecode\Pixel.h" />
-    <ClInclude Include="Shader\Bytecode\Vertex.h" />
+    <ClInclude Include="Shader\Bytecode\Image\Pixel.h" />
+    <ClInclude Include="Shader\Bytecode\Image\Vertex.h" />
+    <ClInclude Include="Shader\Bytecode\Shape\ShapePixel.h" />
+    <ClInclude Include="Shader\Bytecode\Shape\ShapeVertex.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Shader\HLSL\Layout.hlsli">
+    <None Include="Shader\HLSL\Image\Layout.hlsli">
       <FileType>Document</FileType>
     </None>
+    <None Include="Shader\HLSL\Shape\ShapeLayout.hlsli" />
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="Shader\HLSL\Pixel.hlsl">
+    <FxCompile Include="Shader\HLSL\Image\Pixel.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Pixel</ShaderType>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)Shader\Bytecode\Image\Pixel.h</HeaderFileOutput>
     </FxCompile>
-    <FxCompile Include="Shader\HLSL\Vertex.hlsl">
+    <FxCompile Include="Shader\HLSL\Shape\ShapePixel.hlsl">
+      <EnableDebuggingInformation Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</EnableDebuggingInformation>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Pixel</ShaderType>
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ShapeShader::ShapePixel</EntryPointName>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)Shader\Bytecode\Shape\ShapePixel.h</HeaderFileOutput>
+    </FxCompile>
+    <FxCompile Include="Shader\HLSL\Shape\ShapeVertex.hlsl">
+      <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ShapeShader::ShapeVertex</EntryPointName>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)Shader\Bytecode\Shape\ShapeVertex.h</HeaderFileOutput>
+    </FxCompile>
+    <FxCompile Include="Shader\HLSL\Image\Vertex.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vertex</ShaderType>
       <EntryPointName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Shader::Vertex</EntryPointName>
-      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)Shader\Bytecode\Vertex.h</HeaderFileOutput>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)Shader\Bytecode\Image\Vertex.h</HeaderFileOutput>
     </FxCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

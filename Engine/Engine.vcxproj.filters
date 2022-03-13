@@ -32,18 +32,27 @@
     <ClInclude Include="Pipeline.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Shader\Bytecode\Vertex.h">
+    <ClInclude Include="Shader\Bytecode\Image\Vertex.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Shader\Bytecode\Pixel.h">
+    <ClInclude Include="Shader\Bytecode\Image\Pixel.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader\Bytecode\Shape\ShapePixel.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader\Bytecode\Shape\ShapeVertex.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="Shader\HLSL\Vertex.hlsl" />
-    <FxCompile Include="Shader\HLSL\Pixel.hlsl" />
+    <FxCompile Include="Shader\HLSL\Image\Vertex.hlsl" />
+    <FxCompile Include="Shader\HLSL\Image\Pixel.hlsl" />
+    <FxCompile Include="Shader\HLSL\Shape\ShapePixel.hlsl" />
+    <FxCompile Include="Shader\HLSL\Shape\ShapeVertex.hlsl" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Shader\HLSL\Layout.hlsli" />
+    <None Include="Shader\HLSL\Image\Layout.hlsli" />
+    <None Include="Shader\HLSL\Shape\ShapeLayout.hlsli" />
   </ItemGroup>
 </Project>
