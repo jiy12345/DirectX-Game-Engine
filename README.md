@@ -33,7 +33,7 @@
   
 초기 설정에 대한 자세한 내용은 [이 글](https://blog.naver.com/jiy12345/222642266600) 참고  
   
-# 창 띄우기
+## 창 띄우기
 - 창 클래스 관련 설정  
   
 |매개변수명|설명|설정값|
@@ -52,11 +52,11 @@
   
 창 띄우기에 대한 자세한 내용은 [이 글](https://blog.naver.com/jiy12345/222643207733) 참고  
   
-# 메시지 루프  
+## 메시지 루프  
   
   PeekMessage함수를 활용한 메시지 루프 구현
 
 창 띄우기에 대한 자세한 내용은 [이 글](https://blog.naver.com/jiy12345/222650250442) 참고
 
-# 실행 결과
+## 실행 결과
 ![step 1 execution result](https://github.com/jiy12345/DirectX-Game-Engine/blob/master/Result-Images/step%201%20execution%20result.png)
