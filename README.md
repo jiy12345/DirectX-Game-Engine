@@ -6,6 +6,15 @@
     - [메시지 루프](#메시지-루프)
     - [실행 결과](#실행-결과)
 
+- [step2 기본적인 렌더링 파이프라인 구성하기](#step2-기본적인-렌더링-파이프라인-구성하기)
+    - [렌더링 파이프라인을 구성하고 관리하기 위해 사용되는 요소들 생성](#렌더링-파이프라인을-구성하고-관리하기-위해-사용되는-요소들-생성)
+    - [Input Assembler 관련 설정](#Input-Assembler-관련-설정)
+    - [Vertex Shader 관련 설정](#Vertex-Shader-관련-설정)
+    - [Resterizer 관련 설정](#Resterizer-관련-설정)
+    - [Pixel Shader 관련 설정](#Pixel-Shader-관련-설정)
+    - [Output Merger 관련 설정](#Output-Merger-관련-설정)
+    - [실행 결과](#실행-결과)
+
 # step1 창 띄우기
 ## 초기 설정
 
@@ -60,3 +69,12 @@
 
 ## 실행 결과
 ![step 1 execution result](https://github.com/jiy12345/DirectX-Game-Engine/blob/master/Result-Images/step%201%20execution%20result.png)
+
+# step2 기본적인 렌더링 파이프라인 구성하기
+## 렌더링 파이프라인을 구성하고 관리하기 위해 사용되는 요소들 생성
+## Input Assembler 관련 설정
+## Vertex Shader 관련 설정
+## Resterizer 관련 설정
+## Pixel Shader 관련 설정
+## Output Merger 관련 설정
+## 실행 결과
