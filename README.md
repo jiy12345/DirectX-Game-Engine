@@ -76,7 +76,7 @@
  Device, DeviceContext, SwapChain에 대한 자세한 내용은 [이 글](https://blog.naver.com/jiy12345/222679209673) 참고  
   
 - SwapChain을 위한 Descriptor 작성
- 주요 설정 값은 아래와 같음
+ 주요 설정 값은 아래와 같음  
 |매개변수명|설명|설정값|설정값에 대한 설명|  
 |---|---|---|---|  
 |BufferDesc.Format|스왑체인 내 버퍼에서 활용될 데이터의 형태 설정|DXGI_FORMAT_B8G8R8A8_UNORM|자세한 설명은 [이 글](https://blog.naver.com/jiy12345/222624747613) 참고|  
