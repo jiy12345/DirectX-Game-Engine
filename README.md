@@ -69,7 +69,9 @@
 
 ## 실행 결과
 ![step 1 execution result](https://github.com/jiy12345/DirectX-Game-Engine/blob/master/Result-Images/step%201%20execution%20result.png)
-
+  
+  
+  
 # step2 기본적인 렌더링 파이프라인 구성하기
 ## 렌더링 파이프라인을 구성하고 관리하기 위해 사용되는 요소들 생성
  Device, DeviceContext, SwapChain 생성   
