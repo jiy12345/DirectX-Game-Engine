@@ -90,6 +90,8 @@
 - D3D11CreateDeviceAndSwapChain() 함수를 통해 Device, DeviceContext, SwapChain을 한꺼번에 생성  
 
 ## Input Assembler 관련 설정
+ Input Assembler에 대한 전체적인 내용은 [이 글](https://blog.naver.com/jiy12345/222701037912) 참고 
+
 ## Vertex Shader 관련 설정
 ## Resterizer 관련 설정
 ## Pixel Shader 관련 설정
