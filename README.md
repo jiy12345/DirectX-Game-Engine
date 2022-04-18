@@ -65,13 +65,14 @@
   
   PeekMessage함수를 활용한 메시지 루프 구현
 
-창 띄우기에 대한 자세한 내용은 [이 글](https://blog.naver.com/jiy12345/222650250442) 참고
+메시지 에 대한 자세한 내용은 [이 글](https://blog.naver.com/jiy12345/222650250442) 참고
 
 ## 실행 결과
 ![step 1 execution result](https://github.com/jiy12345/DirectX-Game-Engine/blob/master/Result-Images/step%201%20execution%20result.png)  
 <br/>  
 <br/>  
 # step2 기본적인 렌더링 파이프라인 구성하기
+ 좌표 변환등을 진행하지 않고, 출력만 진행할 수 있도록 하는 렌더링 파이프라인을 구성하였다.  
 ## 렌더링 파이프라인을 구성하고 관리하기 위해 사용되는 요소들 생성
  Device, DeviceContext, SwapChain 생성   
  Device, DeviceContext, SwapChain에 대한 자세한 내용은 [이 글](https://blog.naver.com/jiy12345/222679209673) 참고  
@@ -87,13 +88,42 @@
 |BufferUsage|버퍼의 용도와 CPU의 접근 가능성을 설정하기 위한 변수|DXGI_USAGE_RENDER_TARGET_OUTPUT|버퍼를 render target처럼 사용|  
 |OutputWindow|그린 내용을 출력할 창|hWindow|앞서 생성한 창에 출력|  
   
-- D3D11CreateDeviceAndSwapChain() 함수를 통해 Device, DeviceContext, SwapChain을 한꺼번에 생성  
+- D3D11CreateDeviceAndSwapChain() 함수를 통해 Device, DeviceContext, SwapChain을 한꺼번에 생성 
+- WM_SIZE 윈도우 메시지가 파이프라인으로 전달되었을 때, 즉 창의 크기가 바뀌었을 때 [Viewport](https://docs.microsoft.com/en-us/previous-versions/windows/desktop/directmanipulation/directmanipulation-viewports-and-content)의 크기를 창 크기에 맞춰 바꾸도록 설정  
 
 ## Input Assembler 관련 설정
- Input Assembler에 대한 전체적인 내용은 [이 글](https://blog.naver.com/jiy12345/222701037912) 참고 
+ 전체적으로 이미 완성된 이미지를 가져와 그리도록 하기 위해 설정을 진행하였다.  
+ 
+- Vertex Buffer
+    - 한 정점을 위한 값: 이미지 내에서의 좌표, 화면에 그리기 위한 로컬 좌표  
+  
+- Index Buffer
+    - 이미지를 그리기 위해서는 복잡한 도형이 필요하지는 않으므로 굳이 Index Buffer를 사용하지 않음
+
+- Primitive Topology
+    - D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP로 설정(자세한 내용은 [이 글](https://docs.microsoft.com/en-us/windows/uwp/graphics-concepts/primitive-topologies) 참고)
+
 
 ## Vertex Shader 관련 설정
+- Vertex Shader를 위한 [hlsl코드](https://github.com/jiy12345/DirectX-Game-Engine/blob/master/Engine/Shader/HLSL/Image/Vertex.hlsl) 작성
+- hlsl코드를 컴파일한 결과로 나온 [이진 코드](https://github.com/jiy12345/DirectX-Game-Engine/blob/master/Engine/Shader/Bytecode/Image/Vertex.h)를 활용하여 Vertex Shader를 생성
+- 생성한 Vertex Shader를 DeviceContext를 통해 렌더링 파이프라인에 연결
+
 ## Resterizer 관련 설정
+- 따로 진행한 설정 사항 없음
+
 ## Pixel Shader 관련 설정
+- Pixel Shader를 위한 [hlsl코드](https://github.com/jiy12345/DirectX-Game-Engine/blob/master/Engine/Shader/HLSL/Image/Pixel.hlsl) 작성
+- hlsl코드를 컴파일한 결과로 나온 [이진 코드](https://github.com/jiy12345/DirectX-Game-Engine/blob/master/Engine/Shader/Bytecode/Image/Pixel.h)를 활용하여 Pixel Shader를 생성
+- 생성한 Pixel Shader를 DeviceContext를 통해 렌더링 파이프라인에 연결
+
 ## Output Merger 관련 설정
+- WM_SIZE 윈도우 메시지가 파이프라인으로 전달되었을 때, 즉 창의 크기가 바뀌었을 때 Render Target View의 크기를 창 크기에 맞춰 바꾸도록 설정  
+- 검은 색으로 전체를 칠한 후 원하는 내용을 그리도록 설정
+
 ## 실행 결과
+- 색상을 설정한 도형을 그리는 코드 사용
+- 코드는 [step2](https://github.com/jiy12345/DirectX-Game-Engine/tree/step2) branch에 유지되어 있음(master에는 완성된 이미지를 그리기 위한 파이프라인으로 구성)
+![step 2 execution result](https://github.com/jiy12345/DirectX-Game-Engine/blob/master/Result-Images/step%202%20execution%20result.png)  
+<br/>  
+<br/> 
